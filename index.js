@@ -2,9 +2,7 @@ module.exports = function (rows_, opts) {
     if (!opts) opts = {};
     var hsep = opts.hsep === undefined ? '  ' : opts.hsep;
     var align = opts.align || [];
-    var stringLength = opts.stringLength
-        || function (s) { return String(s).length; }
-    ;
+    var stringLength = opts.stringLength || function (s) { return String(s).length; } ;
     
     var dotsizes = reduce(rows_, function (acc, row) {
         forEach(row, function (c, ix) {
@@ -19,9 +17,7 @@ module.exports = function (rows_, opts) {
             var c = String(c_);
             if (align[ix] === '.') {
                 var index = dotindex(c);
-                var size = dotsizes[ix] + (/\./.test(c) ? 1 : 2)
-                    - (stringLength(c) - index)
-                ;
+                var size = dotsizes[ix] + (/\./.test(c) ? 1 : 2) - (stringLength(c) - index) ;
                 return c + Array(size).join(' ');
             }
             else return c;
@@ -44,12 +40,10 @@ module.exports = function (rows_, opts) {
                 return s + c;
             }
             if (align[ix] === 'c') {
-                return Array(Math.ceil(n / 2 + 1)).join(' ')
-                    + c + Array(Math.floor(n / 2 + 1)).join(' ')
-                ;
+                return Array(Math.ceil(n / 2 + 1)).join(' ') + c + Array(Math.floor(n / 2 + 1)).join(' ') ;
             }
             
-            return c + s;
+            return c+ s;
         }).join(hsep).replace(/\s+$/, '');
     }).join('\n');
 };
