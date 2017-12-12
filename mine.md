@@ -57,5 +57,5 @@ Dotsizes,reduce函数，调用forEach函数，里面调用dotindex函数，并�
 第一个map中参数rows是整个矩阵，第二个map参数row是每一行，里面是对l/r/c格式化的处理过程，通过判断，添加每列之间的分隔符,，返回一个处理完成的文本表。
 数据类型：字符串、数组、对象
 
-### 四、执行效果：! ("C:\Users\张萌\Desktop\imgs\1.png")
+### 四、执行效果：![pic](https://github.com/Monmeng/text-table/edit/master/imgs/1.png)
 ### 五、测试效果：
