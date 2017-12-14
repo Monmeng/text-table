@@ -4,6 +4,9 @@ module.exports = function (rows_, opts) {                  //暴露的函数作�
     var align = opts.align || [];                          //列的对齐类型数组，没有定义就是空数组
     var stringLength = opts.stringLength || function (s) { return String(s).length; } ;
                                                           //字符串长度，没有定义就计算字符串长度并返回。
+    
+    
+    //主要是按要求存储数组中每一项的长度，并返回一个数组
     var dotsizes = reduce(rows_, function (acc, row) {
         forEach(row, function (c, ix) {
             var n = dotindex(c);
@@ -12,6 +15,7 @@ module.exports = function (rows_, opts) {                  //暴露的函数作�
         return acc;
     }, []);
     
+   //如果是点匹配方式，先计算出所需匹配的分隔符数量，然后返回本身字符串加上分隔符数组
     var rows = map(rows_, function (row) {
         return map(row, function (c_, ix) {
             var c = String(c_);
@@ -24,6 +28,7 @@ module.exports = function (rows_, opts) {                  //暴露的函数作�
         });
     });
     
+    //存储数组中每一项的长度
     var sizes = reduce(rows, function (acc, row) {
         forEach(row, function (c, ix) {
             var n = stringLength(c);
@@ -31,6 +36,7 @@ module.exports = function (rows_, opts) {                  //暴露的函数作�
         });
         return acc;
     }, []);
+    
     //是对l/r/c格式化的处理过程，通过判断，添加每列之间的分隔符,返回一个处理完成的文本表。
     return map(rows, function (row) {
         return map(row, function (c, ix) {
